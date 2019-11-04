@@ -1,7 +1,4 @@
 package bn.inference;
-
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,14 +11,7 @@ import bn.core.Value;
 
 public class EnumerationInferencer implements Inferencer {
 	
-	public EnumerationInferencer() {
-		
-	}
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public EnumerationInferencer() {	
 	}
 
 	@Override

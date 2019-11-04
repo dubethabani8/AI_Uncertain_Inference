@@ -12,6 +12,7 @@ import bn.core.Distribution;
 import bn.core.Inferencer;
 import bn.core.RandomVariable;
 import bn.inference.EnumerationInferencer;
+import bn.inference.RejectionSamplerInferencer;
 import bn.util.ArraySet;
 
 /**
@@ -100,7 +101,8 @@ public class AIMA_WetGrass {
 		System.out.println(bn);
 		
 		System.out.println("P(Rain|Sprinkler=true) = <0.3,0.7>");
-		Inferencer exact = new EnumerationInferencer();
+		//Inferencer exact = new EnumerationInferencer();
+		Inferencer exact = new RejectionSamplerInferencer();
 		a = new bn.base.Assignment();
 		a.put(S, TRUE);
 		Distribution dist = exact.query(R, a, bn);
