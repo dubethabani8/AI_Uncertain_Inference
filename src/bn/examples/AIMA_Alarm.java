@@ -9,6 +9,7 @@ import bn.core.Distribution;
 import bn.core.Inferencer;
 import bn.core.RandomVariable;
 import bn.inference.EnumerationInferencer;
+import bn.inference.GibbsSamplingInferencer;
 import bn.inference.LikelihoodWeightingInferencer;
 import bn.inference.RejectionSamplerInferencer;
 import bn.base.BooleanDomain;
@@ -112,7 +113,8 @@ public class AIMA_Alarm {
 		System.out.println("P(B|j,m) = \\alpha <0.00059224,0.0014919> ~= <0.284,0.716>");
 		//Inferencer exact = new EnumerationInferencer();
 		//Inferencer exact = new RejectionSamplerInferencer();
-		Inferencer exact = new LikelihoodWeightingInferencer();
+		//Inferencer exact = new LikelihoodWeightingInferencer();
+		Inferencer exact = new GibbsSamplingInferencer();
 		a = new bn.base.Assignment();
 		a.put(J, TRUE);
 		a.put(M, TRUE);

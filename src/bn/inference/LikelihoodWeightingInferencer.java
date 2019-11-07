@@ -19,7 +19,7 @@ public class LikelihoodWeightingInferencer implements Inferencer{
 		return likelihoodWeighting(X, e, network, 100000);
 	}
 	
-	public Distribution likelihoodWeighting (RandomVariable X, Assignment e, BayesianNetwork network, int numSample) {
+	private Distribution likelihoodWeighting (RandomVariable X, Assignment e, BayesianNetwork network, int numSample) {
 		Distribution Q_X = new bn.base.Distribution(X);
 		double[] W = new double[X.getDomain().size()];
 		double sumWeight = 0;

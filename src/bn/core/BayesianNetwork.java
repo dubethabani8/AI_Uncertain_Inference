@@ -57,4 +57,9 @@ public interface BayesianNetwork {
 	 */
 	public RandomVariable getVariableByName(String name);
 	
+	/**
+	 * Return the variables of the Markov blanket of X.
+	 */
+	public Set<RandomVariable> getMarkovBlanket(RandomVariable X);
+	
 }

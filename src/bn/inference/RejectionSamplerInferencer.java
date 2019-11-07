@@ -19,7 +19,7 @@ public class RejectionSamplerInferencer implements Inferencer {
 		return rejectionSampling(X, e, network, 100000);
 	}
 	
-	public Distribution rejectionSampling(RandomVariable X, Assignment e, BayesianNetwork network, double numSamples) {
+	private Distribution rejectionSampling(RandomVariable X, Assignment e, BayesianNetwork network, double numSamples) {
 		Distribution Q_X = new bn.base.Distribution(X);
 		// N is variable of counts for each value of X, initially = 0
 		double[] N = new double[X.getDomain().size()];

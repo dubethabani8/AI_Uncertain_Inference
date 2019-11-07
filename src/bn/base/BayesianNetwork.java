@@ -168,6 +168,26 @@ public class BayesianNetwork implements bn.core.BayesianNetwork {
 		return parents;
 	}
 	
+	
+	@Override
+	public Set<RandomVariable> getMarkovBlanket(RandomVariable X){ //Return variables in Markov blanket of X
+		Set<RandomVariable> mb = new ArraySet<RandomVariable>();
+		
+		Set<RandomVariable> parents = this.getParents(X);
+		Set<RandomVariable> children = this.getChildren(X);
+		Set<RandomVariable> childrenParents = new ArraySet<RandomVariable>();
+		for(RandomVariable child: children) {
+			Set<RandomVariable> childParents = this.getParents(child);
+			childrenParents.addAll(childParents);
+		}
+		
+		mb.addAll(parents);
+		mb.addAll(childrenParents);
+		mb.addAll(children);
+		mb.remove(X);
+		return mb;
+	}
+	
 	// CPT lookup
 
 	/**
