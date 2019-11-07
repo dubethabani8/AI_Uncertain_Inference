@@ -13,7 +13,7 @@ import bn.core.Inferencer;
 import bn.core.RandomVariable;
 import bn.inference.EnumerationInferencer;
 import bn.inference.GibbsSamplingInferencer;
-import bn.inference.LikelihoodWeightingInferencer;
+//import bn.inference.LikelihoodWeightingInferencer;
 import bn.inference.RejectionSamplerInferencer;
 import bn.util.ArraySet;
 
