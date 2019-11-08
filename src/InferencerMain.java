@@ -78,7 +78,7 @@ public class InferencerMain {
 			statement = "Approximate Inference using Rejection Sampling: \n";
 			break;
 		case "likelihood":
-			//exact = new LikelihoodWeightingIferencer();
+			exact = new LikelihoodWeightingInferencer();
 			statement = "Approximate Inference using Likelihood Weighting Inferencer: \n";
 			break;
 		case "gibbs":
