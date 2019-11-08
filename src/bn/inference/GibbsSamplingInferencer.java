@@ -9,12 +9,14 @@ import bn.core.Inferencer;
 import bn.core.RandomVariable;
 import bn.core.Value;
 import bn.util.ArraySet;
+import bn.util.Normal;
 
 public class GibbsSamplingInferencer implements Inferencer {
 
 	@Override
 	public Distribution query(RandomVariable X, Assignment e, BayesianNetwork network) {
-		return gibbsAsk(X, e, network, 100);
+		
+		return gibbsAsk(X, e, network, 100000);
 	}
 
 	private Distribution gibbsAsk(RandomVariable X, Assignment e, BayesianNetwork network, int numSamples) {
@@ -44,8 +46,8 @@ public class GibbsSamplingInferencer implements Inferencer {
 			}
 			x.put(z, randVal);
 		}
-		
-		
+		Normal n = new Normal();
+		Distribution O_X = new bn.base.Distribution(X);
 		for(int j=1; j<=numSamples; j++) {
 			for(RandomVariable Zi: Z) {
 				Assignment mbAssignment = new bn.base.Assignment();
@@ -53,6 +55,7 @@ public class GibbsSamplingInferencer implements Inferencer {
 				for(RandomVariable var: x.keySet()) {
 					if(mbSet.contains(var))
 						mbAssignment.put(var, x.get(var));
+					if(j == 1) O_X = n.normal(X, e, network, numSamples);
 				}
 				x.put(Zi, getRandValAssignment(Zi, mbAssignment, network));
 				
@@ -65,12 +68,13 @@ public class GibbsSamplingInferencer implements Inferencer {
 			}
 			total++;
 		}
+		
+		
 		int i = 0;
 		for(Value val: X.getDomain()) {
 			Q_X.set(val, N[i++]/total);}
-		
 		Q_X.normalize();
-		return Q_X;
+		return O_X; 
 	}
 	
 	
